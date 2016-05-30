@@ -1,0 +1,80 @@
+.card {
+	/* there should be another way to make the dimensions of the card*/
+	width: 300px;
+	height: 250px;
+
+
+	text-align: center;
+
+	
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	
+
+	perspective: 1000px;
+	
+	&:hover &--flipper, &.js-hover &--flipper {
+		transform: rotateY(180deg);
+	}
+
+	
+	&--flipper {
+		/* flip speed goes here */
+		transition: .5s;
+		transform-style: preserve-3d;
+
+		position: relative;
+	}
+
+	&--front,
+	&--back {
+
+		box-sizing: border-box;
+		padding: 40px 20px;
+
+		/* there should be another way to make the dimensions of the card*/
+		width: 300px;
+		height: 250px;
+
+		/* hide back of pane during swap */
+		backface-visibility: hidden;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	&--front {
+
+		color: white;
+
+		/* front pane, placed above back */
+		z-index: 2;
+		/* for firefox 31 */
+		transform: rotateY(0deg);
+		background-image: url('../img/first-tile--bg.jpg');
+	}
+	
+	&--back {
+		/* back, initially hidden pane */
+		transform: rotateY(180deg);
+		background-image: url('../img/first-tile--bg.jpg');
+
+	}
+
+	&__text {
+
+		background-color: rgba(255,255,255,.86);
+		color: orange;
+		
+		/* there should be another way to make the dimensions of the card*/
+		width: 260px;
+		height: 170px;
+		line-height: 170px;
+		font-size: 45px;
+		text-shadow: 0px 0px 1px white;
+
+		display: block;
+	}
+}
