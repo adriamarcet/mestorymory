@@ -734,13 +734,31 @@ li#theme-switcher {
   /* there should be another way to make the dimensions of the card*/
   width: 300px;
   height: 250px;
+  box-sizing: border-box;
   text-align: center;
   display: block;
   margin: 0 auto;
   margin-bottom: 20px;
   perspective: 1000px;
 }
-.card:hover .card--flipper, .card.js-hover .card--flipper {
+.card:hover {
+  position: relative;
+}
+.card:hover:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.18);
+  padding: 10px;
+  display: block;
+  left: -10px;
+  top: -10px;
+}
+.card.js-active {
+  border: 1px solid red;
+}
+.card.js-hover .card--flipper {
   transform: rotateY(180deg);
 }
 .card--flipper {
@@ -750,16 +768,19 @@ li#theme-switcher {
   position: relative;
 }
 .card--front, .card--back {
-  box-sizing: border-box;
-  padding: 40px 20px;
-  /* there should be another way to make the dimensions of the card*/
-  width: 300px;
-  height: 250px;
   /* hide back of pane during swap */
   backface-visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
+  box-sizing: border-box;
+  padding: 40px 20px;
+  /* there should be another way to make the dimensions of the card*/
+  width: 300px;
+  height: 250px;
+  /* the dimensions above minues 1px for the border added in .js-active */
+  width: 298px;
+  height: 248px;
 }
 .card--front {
   color: white;
@@ -775,7 +796,7 @@ li#theme-switcher {
   background-image: url("../img/first-tile--bg.jpg");
 }
 .card__text {
-  background-color: rgba(255, 255, 255, 0.86);
+  background-color: white;
   color: orange;
   /* there should be another way to make the dimensions of the card*/
   width: 260px;
