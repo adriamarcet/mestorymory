@@ -23,7 +23,5 @@ $(document).ready( function(){
 				increaseCount();
 			});
 		});
-	
-
 	console.log("Ehh, What's Up Doc? I see you're ready. (-‿‿-)");
 });
